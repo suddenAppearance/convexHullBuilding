@@ -1,6 +1,7 @@
 package Others;
 
 import Algorithms.GrahamAlgorithm;
+import Algorithms.JarvisAlgorithm;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -25,7 +26,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             array[i] = new Point(s.nextDouble(), s.nextDouble());
         }
-        Stack<Point> stack = GrahamAlgorithm.run(array);
+        Stack<Point> stack = JarvisAlgorithm.run(array);
         System.out.println(Arrays.toString(array));
         System.out.println(Arrays.toString(stack.toArray()));
     }

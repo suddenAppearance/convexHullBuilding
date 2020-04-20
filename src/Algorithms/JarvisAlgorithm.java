@@ -17,7 +17,6 @@ public class JarvisAlgorithm {
     private static Stack<Point> solve(Point[] array) {
         Stack<Point> stack = new Stack<>();
         ArrayList<Point> list = new ArrayList<>(Arrays.asList(array));
-        list.add(list.get(0));
         Point startPoint = list.get(0);
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getY() < startPoint.getY()) {
@@ -26,8 +25,7 @@ public class JarvisAlgorithm {
                 startPoint = list.get(i);
             }
         }
-        Vector2D vector2D = new Vector2D(0, 1);
-        list.remove(startPoint);
+        Vector2D vector2D = new Vector2D(1, 0);
         stack.add(startPoint);
         Point point = returnPointWithMaxPolarAngle(vector2D, startPoint, list);
         Point point1 = startPoint;
@@ -43,6 +41,20 @@ public class JarvisAlgorithm {
     }
 
     private static Point returnPointWithMaxPolarAngle(Vector2D vector2D, Point point, ArrayList<Point> points) {
-        
+        Point maxPoint = points.get(0);
+        Vector2D vector = new Vector2D(maxPoint.getX()-point.getX(),maxPoint.getY() - point.getY());
+        double maxCos = vector.cos(vector2D);
+        for (Point p: points
+             ) {
+            vector = new Vector2D(p.getX()-point.getX(), p.getY() - point.getY());
+            if (vector.cos(vector2D)> maxCos){
+                maxPoint = p;
+                maxCos = vector.cos(vector2D);
+            }
+            else if (vector.cos(vector2D)==maxCos && vector.length()<vector2D.length()){
+                maxPoint = p;
+            }
+        }
+        return maxPoint;
     }
 }

@@ -1,14 +1,12 @@
 package Others;
 
 import Algorithms.JarvisAlgorithm;
-import javafx.scene.canvas.GraphicsContext;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Stack;
 
 public class Main {
-    private static GraphicsContext gc;
 
     public static void main(String[] args) throws IOException {
         Scanner s = new Scanner(System.in);
